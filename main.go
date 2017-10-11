@@ -13,8 +13,8 @@ func main() {
 	s := rand.NewSource(time.Now().UnixNano())
 	r := rand.New(s)
 	for i := 0; i < 20; i++ {
-		g.AddEdge(r.Intn(15), r.Intn(15), r.Intn(7)+1)
+		g.AddEdge(r.Intn(g.NumberOfVertexes()), r.Intn(g.NumberOfVertexes()), r.Intn(7)+1)
 	}
 
-	g.BFS(1)
+	g.BFS(13)
 }
