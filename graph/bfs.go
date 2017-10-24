@@ -8,8 +8,8 @@ import (
 
 //BFS - find paths with BFS algorithm
 func (g *Graph) BFS(startPoint int) {
-	dist := make([]int, g.v)
-	parent := make([]int, g.v)
+	dist := make([]int, len(g.mapOfMap))
+	parent := make([]int, len(g.mapOfMap))
 
 	for i := range dist {
 		dist[i] = inf
@@ -34,7 +34,7 @@ func (g *Graph) BFS(startPoint int) {
 
 		for k, v := range g.mapOfMap[u] {
 			if dist[k] == inf {
-				queue.Add(k)
+				queue.Insert(0,k)
 				dist[k] = dist[u] + v
 				parent[k] = u
 			}
