@@ -21,9 +21,13 @@ func (g *Graph) Dijkstra(startPoint int){
 	dist[startPoint] = 0
 
 	for !q.Empty(){
-		u := minInSlice(dist, q)
-		fmt.Println("Index of min ",u,dist[u], q.Size())
-		q.Remove(u)
+		minInd := IndexOfMin(q, dist)
+		uI, ok := q.Get(minInd)
+		u := uI.(int)
+		if !ok{
+			fmt.Println("Shit")
+		}
+		q.Remove(minInd)
 
 		for k, v := range g.mapOfMap[u]{
 			if q.Contains(k){
@@ -51,27 +55,16 @@ func (g *Graph) Dijkstra(startPoint int){
 }
 
 //IndexOfMin - return index of minimal element or -1
-func IndexOfMin(list singlylinkedlist.List) int{
+func IndexOfMin(list singlylinkedlist.List, dist []int) int{
 	it := list.Iterator()
 	min := inf
 	minIndex := -1
 	for it.Next() {
-		if it.Value().(int) < min{
+		if dist[it.Value().(int)] < min {
+			min = dist[it.Value().(int)]
 			minIndex = it.Index()
-			min = it.Value().(int)
 		}
 	}
 	return minIndex
 }
 
-func minInSlice(list []int, q singlylinkedlist.List) int{
-	m :=inf
-	ind := -1
-	for i, v := range list{
-		if q.Contains(i) &&  v < m {
-			m = v
-			ind = i
-		}
-	}
-	return ind
-}
