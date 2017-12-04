@@ -24,7 +24,10 @@ func main() {
 	g.AddEdge(2,3,11)
 	g.AddEdge(5,4,9)
 	g.AddEdge(3,4,6)
+	fmt.Println("------BFS-------")
 	g.BFS(0)
-	fmt.Println("----------------------")
+	fmt.Println("-------Dijkstra-------")
 	g.Dijkstra(0)
+	fmt.Println("-------Bellmab-Ford-------")
+	g.Bellman(0)
 }

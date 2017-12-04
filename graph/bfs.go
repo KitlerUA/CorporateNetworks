@@ -59,6 +59,7 @@ func findPath(startPoint, endPoint int, parent []int) {
 		fmt.Print(startPoint, " ")
 		return
 	}
+
 	findPath(startPoint, parent[endPoint], parent)
 	fmt.Print(endPoint, " ")
 }

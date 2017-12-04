@@ -5,6 +5,7 @@ import (
 	"fmt"
 )
 
+//Dijkstra - find paths with Dijkstra algorithm
 func (g *Graph) Dijkstra(startPoint int){
 
 	parent := make([]int, len(g.mapOfMap))
