@@ -6,7 +6,7 @@ import (
 )
 
 //Dijkstra - find paths with Dijkstra algorithm
-func (g *Graph) Dijkstra(startPoint int){
+func (g *Graph) Dijkstra(startPoint int) ([]int, []int){
 
 	parent := make([]int, len(g.mapOfMap))
 	dist := make([]int, len(g.mapOfMap))
@@ -42,17 +42,7 @@ func (g *Graph) Dijkstra(startPoint int){
 
 	}
 
-	for k := range g.mapOfMap {
-		fmt.Printf("Distance from Vertex %d to %d = %d \n", startPoint, k, dist[k])
-		if dist[k] == inf {
-			fmt.Print("\tPass not found")
-			fmt.Println()
-			continue
-		}
-		fmt.Print("\tWith path ")
-		findPath(startPoint, k, parent)
-		fmt.Println()
-	}
+	return dist, parent
 }
 
 //IndexOfMin - return index of minimal element or -1

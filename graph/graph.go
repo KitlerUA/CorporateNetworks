@@ -32,6 +32,21 @@ func (g *Graph) AddEdge(u, v, w int) {
 	fmt.Println("Edge ", u, "-", v, " with weight ", w, " added")
 }
 
+//RemoveEdge - remove edge (u,v) and (v,u)
+func (g *Graph) RemoveEdge(u, v int) {
+	if _, ok := g.mapOfMap[u]; ok {
+		if _, ok := g.mapOfMap[u][v]; ok {
+			delete(g.mapOfMap[u], v)
+		}
+	}
+	if _, ok := g.mapOfMap[v]; ok {
+		if _, ok := g.mapOfMap[v][u]; ok {
+			delete(g.mapOfMap[v], u)
+		}
+	}
+	fmt.Println("Edge ", u, "-", v, " removed")
+}
+
 //NumberOfVertexes - return number of vertexes
 func (g *Graph) NumberOfVertexes() int {
 	return g.v

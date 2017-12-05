@@ -1,33 +1,34 @@
 package main
 
 import (
+	"fmt"
 
 	"github.com/KitlerUA/CorporateNetworks/graph"
-	"fmt"
 )
 
 func main() {
 	g := graph.Graph{}
 	g.Build(6)
-	/*s := rand.NewSource(time.Now().UnixNano())
-	r := rand.New(s)
-	for i := 0; i < 20; i++ {
-		g.AddEdge(r.Intn(g.NumberOfVertexes()), r.Intn(g.NumberOfVertexes()), r.Intn(7)+1)
-	}
-	*/
-	g.AddEdge(0,1,7)
-	g.AddEdge(0,2,9)
-	g.AddEdge(0,5,14)
-	g.AddEdge(1,2,10)
-	g.AddEdge(1,3,15)
-	g.AddEdge(2,5,2)
-	g.AddEdge(2,3,11)
-	g.AddEdge(5,4,9)
-	g.AddEdge(3,4,6)
-	fmt.Println("------BFS-------")
-	g.BFS(0)
-	fmt.Println("-------Dijkstra-------")
-	g.Dijkstra(0)
-	fmt.Println("-------Bellmab-Ford-------")
-	g.Bellman(0)
+
+	g.AddEdge(0, 1, 7)
+	g.AddEdge(0, 2, 9)
+	g.AddEdge(0, 5, 14)
+	g.AddEdge(1, 2, 10)
+	g.AddEdge(1, 3, 15)
+	g.AddEdge(2, 5, 2)
+	g.AddEdge(2, 3, 11)
+	g.AddEdge(5, 4, 9)
+	g.AddEdge(3, 4, 6)
+	fmt.Println("------BFS------")
+	dist, parent := g.BFS(0)
+	fmt.Println("Path from 0 to 3 ", graph.FindPath(0, 3, parent), " distance = ", dist[3])
+	fmt.Println("----Dijkstra----")
+	dist, parent = g.Dijkstra(0)
+	fmt.Println("Path from 0 to 3 ", graph.FindPath(0, 3, parent), " distance = ", dist[3])
+	fmt.Println("--Bellmab-Ford--")
+	dist, parent = g.Bellman(0)
+	fmt.Println("Path from 0 to 3 ", graph.FindPath(0, 3, parent), " distance = ", dist[3])
+	fmt.Println("------Yen------")
+	paths := g.Yen(0, 3, 4)
+	fmt.Println("4 shortest pathes from 0 to 3 ", paths)
 }

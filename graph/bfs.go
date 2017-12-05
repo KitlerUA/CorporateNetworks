@@ -7,7 +7,7 @@ import (
 )
 
 //BFS - find paths with BFS algorithm
-func (g *Graph) BFS(startPoint int) {
+func (g *Graph) BFS(startPoint int) ([]int, []int) {
 	dist := make([]int, len(g.mapOfMap))
 	parent := make([]int, len(g.mapOfMap))
 
@@ -27,7 +27,7 @@ func (g *Graph) BFS(startPoint int) {
 		uI, ok := queue.Get(queue.Size() - 1)
 		if !ok {
 			fmt.Print("Cannot convert interface to int")
-			return
+			return []int{}, []int{}
 		}
 		u := uI.(int)
 		queue.Remove(queue.Size() - 1)
@@ -41,7 +41,7 @@ func (g *Graph) BFS(startPoint int) {
 		}
 	}
 
-	for k := range g.mapOfMap {
+	/*for k := range g.mapOfMap {
 		fmt.Printf("Distance from Vertex %d to %d = %d \n", startPoint, k, dist[k])
 		if dist[k] == inf {
 			fmt.Print("\tPass not found")
@@ -51,15 +51,8 @@ func (g *Graph) BFS(startPoint int) {
 		fmt.Print("\tWith path ")
 		findPath(startPoint, k, parent)
 		fmt.Println()
-	}
+	}*/
+	return dist, parent
 }
 
-func findPath(startPoint, endPoint int, parent []int) {
-	if startPoint == endPoint || endPoint == -1 {
-		fmt.Print(startPoint, " ")
-		return
-	}
 
-	findPath(startPoint, parent[endPoint], parent)
-	fmt.Print(endPoint, " ")
-}
