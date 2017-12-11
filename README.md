@@ -8,7 +8,7 @@ Implemented like graph (which implemented like list of edges)
 
 ### How to use
 
-Simply create Graph with number of vertex. After add edges to Graph. Use BFS, Dijkstra, Bellman-Ford, Yen methods to find pathes. Be happy!
+Simply create Graph with number of vertex. After add edges to Graph. Use BFS, Dijkstra, Bellman-Ford, Yen, PairMove methods to find pathes. Be happy!
 
 ### Example
 
