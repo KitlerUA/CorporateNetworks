@@ -29,6 +29,8 @@ func main() {
 	dist, parent = g.Bellman(0)
 	fmt.Println("Path from 0 to 3 ", graph.FindPath(0, 3, parent), " distance = ", dist[3])
 	fmt.Println("------Yen------")
-	paths := g.Yen(0, 3, 4)
+	paths := g.Yen(0, 3, 6)
 	fmt.Println("4 shortest pathes from 0 to 3 ", paths)
+	dist, parent = g.PairMove(0, 2, 3, 2)
+	fmt.Println("Path from 0 to 4 after changing (2,3) to 2 ", graph.FindPath(0, 4, parent), " distance = ", dist[4])
 }

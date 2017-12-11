@@ -21,3 +21,22 @@ func FindDistance(path []int, graph Graph) int {
 	}
 	return dist
 }
+
+func isInPath(endPoint, pathPoint int, parents []int) bool {
+	for endPoint != -1 {
+		if parents[endPoint] == pathPoint {
+			return true
+		}
+		endPoint = parents[endPoint]
+	}
+	return false
+}
+
+func isLeaf(point int, parents []int) bool {
+	for i := range parents {
+		if parents[i] == point {
+			return false
+		}
+	}
+	return true
+}
