@@ -31,6 +31,10 @@ func main() {
 	fmt.Println("------Yen------")
 	paths := g.Yen(0, 3, 6)
 	fmt.Println("4 shortest pathes from 0 to 3 ", paths)
+	fmt.Println("----PairMove----")
 	dist, parent = g.PairMove(0, 2, 3, 2)
 	fmt.Println("Path from 0 to 4 after changing (2,3) to 2 ", graph.FindPath(0, 4, parent), " distance = ", dist[4])
+	g.AddEdge(2, 3, 11)
+	fmt.Println("-----DynAdd-----")
+
 }
