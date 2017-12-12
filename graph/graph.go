@@ -47,6 +47,21 @@ func (g *Graph) RemoveEdge(u, v int) {
 	fmt.Println("Edge ", u, "-", v, " removed")
 }
 
+func (g *Graph) RemoveVertex(u int) {
+	if _, ok := g.mapOfMap[u]; ok {
+		for k := range g.mapOfMap[u] {
+			delete(g.mapOfMap[u], k)
+		}
+		for i := range g.mapOfMap {
+			for k := range g.mapOfMap[i] {
+				if k == u {
+					delete(g.mapOfMap[i], k)
+				}
+			}
+		}
+	}
+}
+
 //NumberOfVertexes - return number of vertexes
 func (g *Graph) NumberOfVertexes() int {
 	return g.v

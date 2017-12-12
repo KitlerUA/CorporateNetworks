@@ -52,5 +52,7 @@ func main() {
 	fmt.Println("-----DynAdd-----")
 	dist, parent = g.DynAdd(0, [][]int{{3, 6, 8}, {6, 4, 1}})
 	fmt.Println("Path from 0 to 6 after adding edges (3,6,8) and (6,4,1) ", graph.FindPath(0, 6, parent), " distance = ", dist[6])
-}
+	fmt.Println("----DynRemove----")
+	dist, parent = g.DynRemove(0, [][]int{{5, 4}, {4, 3}, {4, 6}})
+	fmt.Println("path from 0 to 6 after removing vertex 4 ", graph.FindPath(0, 6, parent), " distance = ", dist[6])
 ````
